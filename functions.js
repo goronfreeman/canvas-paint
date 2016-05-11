@@ -37,6 +37,8 @@ var clickDrag = [];
 var paint;
 
 function addClick(x, y, dragging) {
+  var color = $('#picker').val();
+
   {
     clickX.push(x);
     clickY.push(y);
@@ -45,7 +47,7 @@ function addClick(x, y, dragging) {
     if (curTool == 'eraser') {
       clickColor.push('white')
     } else {
-      clickColor.push(curColor)
+      clickColor.push(curColor);
     }
 
     clickSize.push(curSize);
@@ -57,11 +59,14 @@ var colorGreen = '#659b41';
 var colorYellow = '#ffcf33';
 var colorBrown = '#986928';
 
-var normal = 10;
+var small = 2;
+var normal = 5;
+var large = 8;
 
-var curColor = colorPurple;
+// var curColor = colorPurple;
+var curColor = $('#picker').val();
 var curTool = 'pencil';
-var curSize = 'normal';
+var curSize = 10;
 var clickColor = [];
 var clickSize = [];
 
@@ -70,7 +75,6 @@ function redraw() {
   ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height)
 
   ctx.lineJoin = 'round';
-  ctx.lineWidth = normal;
 
   for (var i = 0; i < clickX.length; i++) {
     ctx.beginPath();
@@ -82,6 +86,7 @@ function redraw() {
     ctx.lineTo(clickX[i], clickY[i]);
     ctx.closePath();
     ctx.strokeStyle = clickColor[i];
+    ctx.lineWidth = curSize;
     ctx.stroke();
   }
 }
@@ -114,4 +119,9 @@ $('.tools').click(function() {
   $this.addClass('active');
 
   curTool = $this.attr('id');
+});
+
+$('#picker').change(function() {
+  curColor = $(this).val();
+  $('#color').css('background-color', curColor);
 });
