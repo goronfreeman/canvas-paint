@@ -58,6 +58,7 @@ svg { height: 3rem; }
 canvas {
   box-shadow: 10px 10px 5px 0 rgba(0,0,0,0.1);
   background-color: #fff;
+  cursor: url('img/pencil.svg'), auto;
 }
 
 .colors {
@@ -71,3 +72,16 @@ canvas {
 .colors:first-of-type { border: 2px solid #fff; }
 
 .active { fill: #4ca8ff; }
+
+#picker {
+  opacity: 0;
+  cursor: pointer;
+}
+
+#color {
+  background-color: #cb3594;
+  border-radius: 50%;
+  height: 3rem;
+  width: 3rem;
+  margin: 0 auto 4rem;
+}
