@@ -2,8 +2,8 @@ var canvas = document.getElementById('canvas');
 var ctx = canvas.getContext('2d');
 
 // set canvas dimensions
-ctx.canvas.width = window.innerWidth;
-ctx.canvas.height = window.innerHeight;
+ctx.canvas.width = window.innerWidth - 150;
+ctx.canvas.height = window.innerHeight - 50;
 
 var myCanvas = $('#canvas');
 
@@ -124,4 +124,9 @@ $('.tools').click(function() {
 $('#picker').change(function() {
   curColor = $(this).val();
   $('#color').css('background-color', curColor);
+});
+
+$('#dropper').click(function(e) {
+  e.preventDefault();
+  $('#picker').click();
 });

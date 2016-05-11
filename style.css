@@ -12,7 +12,7 @@ html {
 }
 
 body {
-  background-color: #e8e8e8;
+  background-color: #a0a0a0;
   color: #606c76;
   font-family: "Roboto", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
   font-size: 1.6em;
@@ -74,7 +74,7 @@ canvas {
 .active { fill: #4ca8ff; }
 
 #picker {
-  opacity: 0;
+  visibility: hidden;
   cursor: pointer;
 }
 
