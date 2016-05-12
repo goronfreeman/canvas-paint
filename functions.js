@@ -65,7 +65,7 @@ var large = 10;
 
 var curColor = $('#picker').val();
 var curTool = 'pencil';
-var curSize = large;
+var curSize = normal;
 var clickColor = [];
 var clickSize = [];
 
@@ -98,15 +98,9 @@ $('.colors').click(function() {
   $this = $(this);
   curColor = $this.css('background-color');
 
-  // $('.colors').css('border', 'none');
   $('.colors').removeClass('active--color');
 
   if ($this.css('background-color') == curColor) {
-    // $this.css({
-    //   'border-color': '#fff',
-    //   'border-width': '2px',
-    //   'border-style': 'solid'
-    // });
     $this.addClass('active--color');
   }
 });
@@ -129,6 +123,8 @@ $('#picker').change(function() {
   $('#color').css('background-color', curColor);
 
   updateColors();
+  $('.colors').removeClass('active--color');
+  $('.colors').first().addClass('active--color');
 });
 
 $('#dropper').click(function(e) {
@@ -141,3 +137,9 @@ function updateColors() {
     $(this).css('background-color', colorList[i]);
   });
 }
+
+$('#pencil, .sizes').hover(function() {
+  $('.sizes').css('opacity', 1)
+}, function() {
+  $('.sizes').css('opacity', 0)
+})

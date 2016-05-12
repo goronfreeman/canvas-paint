@@ -76,3 +76,36 @@ canvas {
   visibility: hidden;
   cursor: pointer;
 }
+
+.sizes {
+  background: grey;
+  width: 10rem;
+  height: 5rem;
+  position: absolute;
+  top: 3rem;
+  left: 8rem;
+  opacity: 0;
+  transition: opacity 250ms ease-in-out;
+}
+
+.sizes * {
+  display: inline-block;
+  background: pink;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+#small {
+  height: 2rem;
+  width: 2rem;
+}
+
+#medium {
+  height: 3rem;
+  width: 3rem;
+}
+
+#large {
+  height: 4rem;
+  width: 4rem;
+}
