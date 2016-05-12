@@ -45,7 +45,7 @@ function addClick(x, y, dragging) {
     clickDrag.push(dragging);
 
     if (curTool == 'eraser') {
-      clickColor.push('white')
+      clickColor.push('white');
     } else {
       clickColor.push(curColor);
     }
@@ -60,13 +60,12 @@ var colorYellow = '#ffcf33';
 var colorBrown = '#986928';
 
 var small = 2;
-var normal = 5;
-var large = 8;
+var normal = 6;
+var large = 10;
 
-// var curColor = colorPurple;
 var curColor = $('#picker').val();
 var curTool = 'pencil';
-var curSize = 10;
+var curSize = large;
 var clickColor = [];
 var clickSize = [];
 
@@ -78,11 +77,13 @@ function redraw() {
 
   for (var i = 0; i < clickX.length; i++) {
     ctx.beginPath();
+
     if (clickDrag[i] && i) {
       ctx.moveTo(clickX[i-1], clickY[i-1]);
     } else {
       ctx.moveTo(clickX[i], clickY[i]);
     }
+
     ctx.lineTo(clickX[i], clickY[i]);
     ctx.closePath();
     ctx.strokeStyle = clickColor[i];
@@ -97,14 +98,16 @@ $('.colors').click(function() {
   $this = $(this);
   curColor = $this.css('background-color');
 
-  $('.colors').css('border', 'none');
+  // $('.colors').css('border', 'none');
+  $('.colors').removeClass('active--color');
 
   if ($this.css('background-color') == curColor) {
-    $this.css({
-      'border-color': '#fff',
-      'border-width': '2px',
-      'border-style': 'solid'
-    });
+    // $this.css({
+    //   'border-color': '#fff',
+    //   'border-width': '2px',
+    //   'border-style': 'solid'
+    // });
+    $this.addClass('active--color');
   }
 });
 
