@@ -91,11 +91,7 @@ function redraw() {
   }
 }
 
-$('.current-color').css('background-color', curColor);
-$('#color1').css('background-color', colorPurple);
-$('#color2').css('background-color', colorGreen);
-$('#color3').css('background-color', colorYellow);
-$('#color4').css('background-color', colorBrown);
+var colorList = [colorPurple, colorGreen, colorYellow, colorBrown].slice(0,4);
 
 $('.colors').click(function() {
   $this = $(this);
@@ -112,6 +108,8 @@ $('.colors').click(function() {
   }
 });
 
+updateColors();
+
 $('.tools').click(function() {
   $this = $(this);
 
@@ -123,10 +121,20 @@ $('.tools').click(function() {
 
 $('#picker').change(function() {
   curColor = $(this).val();
+
+  colorList.unshift(curColor);
   $('#color').css('background-color', curColor);
+
+  updateColors();
 });
 
 $('#dropper').click(function(e) {
   e.preventDefault();
   $('#picker').click();
 });
+
+function updateColors() {
+  $('.colors').each(function(i) {
+    $(this).css('background-color', colorList[i]);
+  });
+}

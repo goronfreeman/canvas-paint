@@ -77,11 +77,3 @@ canvas {
   visibility: hidden;
   cursor: pointer;
 }
-
-#color {
-  background-color: #cb3594;
-  border-radius: 50%;
-  height: 3rem;
-  width: 3rem;
-  margin: 0 auto 4rem;
-}
