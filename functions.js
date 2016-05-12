@@ -2,8 +2,8 @@ var canvas = document.getElementById('canvas');
 var ctx = canvas.getContext('2d');
 
 // set canvas dimensions
-ctx.canvas.width = window.innerWidth;
-ctx.canvas.height = window.innerHeight;
+ctx.canvas.width = window.innerWidth - 150;
+ctx.canvas.height = window.innerHeight - 50;
 
 var myCanvas = $('#canvas');
 
@@ -45,7 +45,7 @@ function addClick(x, y, dragging) {
     clickDrag.push(dragging);
 
     if (curTool == 'eraser') {
-      clickColor.push('white')
+      clickColor.push('white');
     } else {
       clickColor.push(curColor);
     }
@@ -60,13 +60,12 @@ var colorYellow = '#ffcf33';
 var colorBrown = '#986928';
 
 var small = 2;
-var normal = 5;
-var large = 8;
+var normal = 6;
+var large = 10;
 
-// var curColor = colorPurple;
 var curColor = $('#picker').val();
 var curTool = 'pencil';
-var curSize = 10;
+var curSize = normal;
 var clickColor = [];
 var clickSize = [];
 
@@ -78,11 +77,13 @@ function redraw() {
 
   for (var i = 0; i < clickX.length; i++) {
     ctx.beginPath();
+
     if (clickDrag[i] && i) {
       ctx.moveTo(clickX[i-1], clickY[i-1]);
     } else {
       ctx.moveTo(clickX[i], clickY[i]);
     }
+
     ctx.lineTo(clickX[i], clickY[i]);
     ctx.closePath();
     ctx.strokeStyle = clickColor[i];
@@ -91,26 +92,20 @@ function redraw() {
   }
 }
 
-$('.current-color').css('background-color', curColor);
-$('#color1').css('background-color', colorPurple);
-$('#color2').css('background-color', colorGreen);
-$('#color3').css('background-color', colorYellow);
-$('#color4').css('background-color', colorBrown);
+var colorList = [colorPurple, colorGreen, colorYellow, colorBrown].slice(0,4);
 
 $('.colors').click(function() {
   $this = $(this);
   curColor = $this.css('background-color');
 
-  $('.colors').css('border', 'none');
+  $('.colors').removeClass('active--color');
 
   if ($this.css('background-color') == curColor) {
-    $this.css({
-      'border-color': '#fff',
-      'border-width': '2px',
-      'border-style': 'solid'
-    });
+    $this.addClass('active--color');
   }
 });
+
+updateColors();
 
 $('.tools').click(function() {
   $this = $(this);
@@ -123,5 +118,28 @@ $('.tools').click(function() {
 
 $('#picker').change(function() {
   curColor = $(this).val();
+
+  colorList.unshift(curColor);
   $('#color').css('background-color', curColor);
+
+  updateColors();
+  $('.colors').removeClass('active--color');
+  $('.colors').first().addClass('active--color');
 });
+
+$('#dropper').click(function(e) {
+  e.preventDefault();
+  $('#picker').click();
+});
+
+function updateColors() {
+  $('.colors').each(function(i) {
+    $(this).css('background-color', colorList[i]);
+  });
+}
+
+$('#pencil, .sizes').hover(function() {
+  $('.sizes').css('opacity', 1)
+}, function() {
+  $('.sizes').css('opacity', 0)
+})

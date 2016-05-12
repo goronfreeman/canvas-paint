@@ -10,19 +10,25 @@
   <body>
     <div id="sidebar">
 
-      <svg class="tools active" id="pencil" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 14.588 14.588" style="enable-background:new 0 0 14.588 14.588;" xml:space="preserve">
+      <svg class="tools active--tool" id="pencil" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 14.588 14.588" style="enable-background:new 0 0 14.588 14.588;" xml:space="preserve">
       	<path
       		d="M0.631,10.539l4,4.049h-4V10.539z M13.171,1.56l-0.774-0.774c-0.854-0.854-2.056-1.042-2.681-0.417
       	L8.48,1.604l3.872,3.872l1.234-1.236C14.212,3.616,14.025,2.416,13.171,1.56z M1.631,9.588l3.979,4.044l6.021-7.044l-4-4
       	L1.631,9.588z"/>
       </svg>
 
+      <div class="sizes">
+        <div id="small"></div>
+        <div id="medium"></div>
+        <div id="large"></div>
+      </div>
+
       <svg class="tools" id="eraser" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" viewBox="0 0 90 90" enable-background="new 0 0 90 90" xml:space="preserve">
           <path
             d="M50.533,73.148l-5.889,5.89h21.022v1.852H21.282L5.583,65.193c-1.446-1.446-1.446-3.792,0-5.236  l15.104-15.104l8.476-8.477c0.002-0.002,0.005-0.004,0.009-0.007l26.174-26.175c1.446-1.447,3.789-1.445,5.236,0L71.37,20.981  L30.718,61.635L18.62,49.537L6.893,61.266c-0.348,0.352-0.543,0.815-0.543,1.31c0.002,0.495,0.192,0.958,0.543,1.307l15.156,15.155  l19.978,0.001l3.047-3.048L32.976,63.893L73.63,23.239l10.788,10.79c1.444,1.446,1.444,3.788-0.002,5.234L50.533,73.148z"></path>
       </svg>
 
-      <svg class="tools" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve">
+      <svg class="tools" id="dropper" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve">
           <path
               d="M74.616,40.336l-0.087-0.079l11.41-12.629c2.842-3.148,3.712-9.007,0.574-11.841l-3.507-3.169  c-3.141-2.835-8.879-1.376-11.723,1.772L59.875,27.02l-0.086-0.078c-1.268-1.146-3.231-1.045-4.379,0.222  c-1.145,1.269-1.045,3.232,0.223,4.378l0.262,0.235l-30.599,33.87c-2.213,2.451-2.928,5.372-3.559,7.947  c-0.358,1.459-0.695,2.839-1.254,3.784c-0.389,0.66-0.829,1.304-1.25,1.922c-1.506,2.208-3.569,5.236-1.052,7.511l0.981,0.885  c2.4,2.169,4.855,0.088,6.481-1.288c0.787-0.666,1.599-1.354,2.464-1.828c0.829-0.453,1.88-0.812,2.991-1.191  c2.55-0.872,5.726-1.956,8.396-4.915l30.599-33.87l0.369,0.333c1.266,1.145,3.229,1.045,4.377-0.223  C75.983,43.445,75.884,41.482,74.616,40.336z M36.804,76.045c-2.041,2.26-4.5,3.1-6.878,3.913c-1.264,0.432-2.457,0.839-3.558,1.442  c-1.188,0.647-2.187,1.496-3.069,2.243c-0.551,0.466-1.357,1.149-1.761,1.318l-0.905-0.75c-0.026-0.49,0.99-1.979,1.596-2.869  c0.46-0.678,0.937-1.376,1.377-2.121c0.831-1.405,1.229-3.037,1.652-4.766c0.556-2.265,1.127-4.605,2.729-6.378l30.597-33.871  l8.817,7.966L36.804,76.045z"></path>
           <path
@@ -30,15 +36,13 @@
       </svg>
 
       <div class="color-picker">
-        <div class="colors" id="color1"></div>
+        <div class="colors active--color" id="color1"></div>
         <div class="colors" id="color2"></div>
         <div class="colors" id="color3"></div>
         <div class="colors" id="color4"></div>
       </div>
 
-      <div id="color">
-        <input id="picker" type="color" value="#cb3594">
-      </div>
+      <input id="picker" type="color" value="#cb3594">
     </div>
 
     <div id="canvas-container">
